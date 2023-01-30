@@ -21,3 +21,14 @@ pub fn get_user_input<T>(prompt: &str) -> T
 
     return number;
 }
+
+macro_rules! get_user_input {
+    ($prompt:expr, $T:ty) => {
+        {
+            println!("{}", $prompt);
+            let mut user_input = String::new();
+            std::io::stdin().read_line(&mut user_input).expect("Failed to read line");
+            user_input.trim().parse::<$T>().expect("Please enter a valid number")
+        }
+    }
+}
