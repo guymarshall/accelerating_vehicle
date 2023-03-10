@@ -26,7 +26,7 @@ fn main() {
     while !finished {
         let air_resistance_force: f64 = ((air_density * drag_coefficient * frontal_area) / 2.0) * velocity * velocity;
         let delta_ke: f64 = delta_t * (input_power - (air_resistance_force * velocity));
-        let new_velocity: f64 = Math.sqrt(velocity * velocity) + (2.0 * delta_ke / mass));
+        let new_velocity: f64 = Math.sqrt(velocity * velocity) + (2.0 * delta_ke / mass);
 
         println!("Time: {} seconds, Velocity: {} mph%n", time_counter, mps_to_mph(new_velocity));
 
