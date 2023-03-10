@@ -1,4 +1,5 @@
 mod user_input;
+mod math;
 
 fn main() {
     println!("This program works out the top speed of a vehicle with a given mass and power output");
