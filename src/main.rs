@@ -30,8 +30,7 @@ fn main() {
 
         println!("Time: {} seconds, Velocity: {} mph%n", time_counter, mps_to_mph(new_velocity));
 
-        if new_velocity - velocity < 0.000001
-        {
+        if new_velocity - velocity < 0.000001 {
             finished = true;
         }
 
