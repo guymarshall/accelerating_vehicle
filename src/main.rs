@@ -23,6 +23,8 @@ fn main() {
     let mut time_counter: f64 = 1.0;
     let mut finished: bool = false;
 
+    let minimum_change: f64 = 0.000001;
+
     while !finished {
         let air_resistance_force: f64 = ((air_density * drag_coefficient * frontal_area) / 2.0) * velocity * velocity;
         let delta_ke: f64 = delta_t * (input_power - (air_resistance_force * velocity));
@@ -30,7 +32,7 @@ fn main() {
 
         println!("Time: {} seconds, Velocity: {} mph", time_counter, mps_to_mph(new_velocity));
 
-        if new_velocity - velocity < 0.000001 {
+        if new_velocity - velocity < minimum_change {
             finished = true;
         }
 
