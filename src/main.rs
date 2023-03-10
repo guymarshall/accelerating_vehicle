@@ -12,22 +12,22 @@ fn main() {
 
     let start_time: Instant = Instant::now();
 
+    let air_density: f64 = 1.225;
+    let drag_coefficient: f64 = 0.3;
+    let frontal_area: f64 = 0.85 * 1.89 * 1.46;
+
+    let delta_t: i32 = 1;
+
+    let velocity: f64 = 0.0;
+    let time_counter: i32 = 1;
+    let finished: bool = false;
+
     let end_time: Instant = Instant::now();
     let time_taken: Duration = end_time - start_time;
     println!("This program took {:?} seconds to calculate.", time_taken);
 }
 
 /*
-double airDensity = 1.225;
-double dragCoefficient = 0.3;
-double frontalArea = 0.85 * 1.89 * 1.46;
-
-int deltaT = 1;
-
-double velocity = 0.0;
-int timeCounter = 1;
-boolean finished = false;
-
 while (!finished)
 {
     double airResistanceForce = ((airDensity * dragCoefficient * frontalArea) / 2) * Math.pow(velocity, 2);
