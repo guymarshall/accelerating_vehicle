@@ -1,3 +1,5 @@
+#![forbid(unsafe_code)]
+
 /*
 public static double mpsToMph(double speedInMps)
 {
