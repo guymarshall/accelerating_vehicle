@@ -8,45 +8,35 @@ fn main() {
 }
 
 /*
-package com.marshall.guy;
+long startTime = System.nanoTime();
 
-import java.util.Scanner;
+double airDensity = 1.225;
+double dragCoefficient = 0.3;
+double frontalArea = 0.85 * 1.89 * 1.46;
 
-public class App
+int deltaT = 1;
+
+double velocity = 0.0;
+int timeCounter = 1;
+boolean finished = false;
+
+while (!finished)
 {
-    public static void main(String[] args)
+    double airResistanceForce = ((airDensity * dragCoefficient * frontalArea) / 2) * Math.pow(velocity, 2);
+    double deltaKE = deltaT * (inputPower - (airResistanceForce * velocity));
+    double newVelocity = Math.sqrt(Math.pow(velocity, 2) + (2 * deltaKE / mass));
+
+    System.out.printf("Time: %d seconds, Velocity: %f mph%n", timeCounter, mpsToMph(newVelocity));
+
+    if (newVelocity - velocity < 0.000001)
     {
-        long startTime = System.nanoTime();
-
-        double airDensity = 1.225;
-        double dragCoefficient = 0.3;
-        double frontalArea = 0.85 * 1.89 * 1.46;
-
-        int deltaT = 1;
-
-        double velocity = 0.0;
-        int timeCounter = 1;
-        boolean finished = false;
-
-        while (!finished)
-        {
-            double airResistanceForce = ((airDensity * dragCoefficient * frontalArea) / 2) * Math.pow(velocity, 2);
-            double deltaKE = deltaT * (inputPower - (airResistanceForce * velocity));
-            double newVelocity = Math.sqrt(Math.pow(velocity, 2) + (2 * deltaKE / mass));
-
-            System.out.printf("Time: %d seconds, Velocity: %f mph%n", timeCounter, mpsToMph(newVelocity));
-
-            if (newVelocity - velocity < 0.000001)
-            {
-                finished = true;
-            }
-
-            velocity = newVelocity;
-            timeCounter += deltaT;
-        }
-
-        double timeTaken = (double)(System.nanoTime() - startTime) / 1_000_000_000;
-        System.out.printf("This program took %f seconds to calculate.", timeTaken);
+        finished = true;
     }
+
+    velocity = newVelocity;
+    timeCounter += deltaT;
 }
+
+double timeTaken = (double)(System.nanoTime() - startTime) / 1_000_000_000;
+System.out.printf("This program took %f seconds to calculate.", timeTaken);
 */
