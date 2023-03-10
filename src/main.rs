@@ -28,7 +28,7 @@ fn main() {
         let delta_ke: f64 = delta_t * (input_power - (air_resistance_force * velocity));
         let new_velocity: f64 = f64::sqrt(velocity * velocity) + (2.0 * delta_ke / mass);
 
-        println!("Time: {} seconds, Velocity: {} mph%n", time_counter, mps_to_mph(new_velocity));
+        println!("Time: {} seconds, Velocity: {} mph", time_counter, mps_to_mph(new_velocity));
 
         if new_velocity - velocity < 0.000001 {
             finished = true;
