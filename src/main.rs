@@ -1,7 +1,9 @@
 mod user_input;
 
 fn main() {
-    println!("Hello, world!");
+    println!("This program works out the top speed of a vehicle with a given mass and power output");
+    let mass: f64 = user_input::input("Mass (kg):");
+    let input_power: f64 = user_input::input("Power (W):");
 }
 
 /*
