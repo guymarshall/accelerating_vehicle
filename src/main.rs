@@ -43,22 +43,3 @@ fn main() {
     let time_taken: Duration = end_time - start_time;
     println!("This program took {:?} seconds to calculate.", time_taken);
 }
-
-/*
-while (!finished)
-{
-    double airResistanceForce = ((airDensity * dragCoefficient * frontalArea) / 2) * Math.pow(velocity, 2);
-    double deltaKE = deltaT * (inputPower - (airResistanceForce * velocity));
-    double newVelocity = Math.sqrt(Math.pow(velocity, 2) + (2 * deltaKE / mass));
-
-    System.out.printf("Time: %d seconds, Velocity: %f mph%n", timeCounter, mpsToMph(newVelocity));
-
-    if (newVelocity - velocity < 0.000001)
-    {
-        finished = true;
-    }
-
-    velocity = newVelocity;
-    timeCounter += deltaT;
-}
-*/
