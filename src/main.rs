@@ -14,25 +14,8 @@ import java.util.Scanner;
 
 public class App
 {
-    static Scanner scanner = new Scanner(System.in);
-
-    public static double mpsToMph(double speedInMps)
-    {
-        return speedInMps * 3600.0 / 1600.0;
-    }
-
-    public static double input(String prompt)
-    {
-        System.out.print(prompt);
-        return scanner.nextDouble();
-    }
-
     public static void main(String[] args)
     {
-        System.out.println("This program works out the top speed of a vehicle with a given mass and power output");
-        double mass = input("Mass (kg): ");
-        double inputPower = input("Power (W): ");
-
         long startTime = System.nanoTime();
 
         double airDensity = 1.225;
