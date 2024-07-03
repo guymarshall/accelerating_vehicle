@@ -12,7 +12,7 @@ public class Main {
         return scanner.nextDouble();
     }
 
-    public static void debug(String text)
+    public static void log(String text)
     {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("log.txt", true)))
         {
@@ -27,13 +27,9 @@ public class Main {
     public static void main(String[] args)
     {
         System.out.println("This program works out the top speed of a vehicle with a given mass and power output.");
-//        double mass = userInput("Mass (kg): ");
-        double mass = 1000;
+        double mass = userInput("Mass (kg): ");
 
-//        double inputPower = userInput("Power (W): ");
-        double inputPower = 10000;
-
-//        System.out.println("mass: " + mass + "kg, and power: " + inputPower + "W.");
+        double inputPower = userInput("Power (W): ");
 
         double airDensity = 1.225; // 15C at sea level
         double dragCoefficient = 0.3; // normal car
@@ -41,25 +37,25 @@ public class Main {
 //        double dragCoefficient = 0.88; // normal bus
 
         double velocity = 0.1;
-//        int latestTime = 0;
         double deltaTime = 0.00001;
 
-        for (double time = 0.0; time < 42.0; time += deltaTime)
+        double accelerationThreshold = 0.1;
+        double acceleration;
+        double time = 0.0;
+
+        do
         {
             double airResistanceForce = ((airDensity * dragCoefficient * frontalArea) / 2.0) * velocity * velocity;
             double power = inputPower - (airResistanceForce * velocity);
             double velocityAsKineticEnergy = 0.5 * mass * velocity * velocity;
             double kineticEnergy = velocityAsKineticEnergy + (power * deltaTime);
-            velocity = Math.sqrt((2 * kineticEnergy) / mass);
+            double newVelocity = Math.sqrt((2 * kineticEnergy) / mass);
+            acceleration = (newVelocity - velocity) / deltaTime;
+            velocity = newVelocity;
 
-//            boolean newTimeDifferent = (int)time != latestTime;
-//            if (newTimeDifferent)
-//            {
-//                latestTime = (int)time;
-//                System.out.printf("Time: %d seconds, Velocity: %f m/s.%n", latestTime, velocity);
-//            }
-//            debug(String.format("%f,%f%n", time, velocity));
+//            log(String.format("%f,%f%n", time, velocity));
             System.out.printf("Time: %f seconds, Velocity: %f m/s.%n", time, velocity);
-        }
+            time += deltaTime;
+        } while (acceleration > accelerationThreshold);
     }
 }
