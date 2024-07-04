@@ -24,7 +24,7 @@ public class Main {
         }
     }
 
-    public static void main(String[] args)
+    public static void main(String[] args) throws InterruptedException
     {
         System.out.println("This program works out the top speed of a vehicle with a given mass and power output.");
         double mass = userInput("Mass (kg): ");
@@ -34,7 +34,6 @@ public class Main {
         double airDensity = 1.225; // 15C at sea level
         double dragCoefficient = 0.3; // normal car
         double frontalArea = 0.85 * 1.89 * 1.46; // normal car
-//        double dragCoefficient = 0.88; // normal bus
 
         double velocity = 0.1;
         double deltaTime = 0.00001;
@@ -42,6 +41,7 @@ public class Main {
         double accelerationThreshold = 0.1;
         double acceleration;
         double time = 0.0;
+        int latestTime = 0;
 
         do
         {
@@ -53,8 +53,15 @@ public class Main {
             acceleration = (newVelocity - velocity) / deltaTime;
             velocity = newVelocity;
 
+            boolean newTimeDifferent = (int)time != latestTime;
+            if (newTimeDifferent)
+            {
+                latestTime = (int)time;
+                Thread.sleep(1000);
+                System.out.printf("Time: %d seconds, Velocity: %f m/s.%n", latestTime, velocity);
+            }
+
 //            log(String.format("%f,%f%n", time, velocity));
-            System.out.printf("Time: %f seconds, Velocity: %f m/s.%n", time, velocity);
             time += deltaTime;
         } while (acceleration > accelerationThreshold);
     }
