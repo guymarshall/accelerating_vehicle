@@ -1,6 +1,3 @@
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
@@ -10,18 +7,6 @@ public class Main {
     {
         System.out.print(prompt);
         return scanner.nextDouble();
-    }
-
-    public static void log(String text)
-    {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("log.txt", true)))
-        {
-            writer.write(text);
-        }
-        catch (IOException e)
-        {
-            System.out.println(e.getMessage());
-        }
     }
 
     public static void main(String[] args) throws InterruptedException
@@ -61,7 +46,6 @@ public class Main {
                 System.out.printf("Time: %d seconds, Velocity: %f m/s.%n", latestTime, velocity);
             }
 
-//            log(String.format("%f,%f%n", time, velocity));
             time += deltaTime;
         } while (acceleration > accelerationThreshold);
     }
