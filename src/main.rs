@@ -1,14 +1,14 @@
 use std::{thread, time::Duration};
 
-mod user_input;
+use promptput::input;
 
 fn main() {
     println!(
         "This program works out the top speed of a vehicle with a given mass and power output."
     );
-    let mass: f64 = user_input::input("Mass (kg):");
+    let mass: f64 = input("Mass (kg):");
 
-    let input_power: f64 = user_input::input("Power (W): ");
+    let input_power: f64 = input("Power (W): ");
 
     let air_density: f64 = 1.225; // 15C at sea level
     let drag_coefficient: f64 = 0.3; // normal car
